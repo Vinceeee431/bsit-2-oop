@@ -1,24 +1,20 @@
-import java.util.Scanner;
-
 public class Main {
-    static int number = 0;
-    static int count =1;
     public static void main(String[] args) {
+        Student s1 = new Student("Alice", 20, "BSIT", 85.0, 90.0, 88.0);
+        Student s2 = new Student("Bob", 19, "BSCS", 92.0, 95.0, 89.0);
+        Student s3 = new Student("Charlie", 21, "BSIT", 65.0, 70.0, 68.0);
 
-        Scanner scanner = new Scanner(System.in);
-        while (count<=5) {
-            System.out.print("Enter number " + count+ ": " );
-            try{
-                number = number+scanner.nextInt();
-                count++;
+        Student[] students = {s1, s2, s3};
 
-            }catch (Exception e) {
-                System.out.println("Invalid input. Please enter an integer.");
-                scanner.nextLine();
+        int passingCount = 0;
+
+        for (Student s : students) {
+            s.displayInfo();
+            if (s.isPassing()) {
+                passingCount++;
             }
-
-
         }
-        System.out.println("Total Number: "+number);
+
+        System.out.println("Summary: " + passingCount + " out of " + students.length + " students are passing.");
     }
 }
